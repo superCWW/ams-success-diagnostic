@@ -1,0 +1,452 @@
+@page
+@model AmsDiagnostic.Pages.ResultsModel
+@{
+    Layout = "_ResultsLayout";
+    ViewData["Title"] = "AMS Diagnostic Results";
+}
+
+<div class="results-container">
+    <div class="results-card">
+        <div class="results-header">
+            <img src="~/img/ams-diagnostic-header.png.png" alt="Your AMS Success Diagnostic Results" />
+        </div>
+        <div class="results-body">
+            <div class="pill-container">
+                <button class="diagnostic-pill active" data-section="summary">
+                    <span class="pill-number">1</span>
+                    <span>Summary</span>
+                </button>
+                <button class="diagnostic-pill" data-section="foundation">
+                    <span class="pill-number">2</span>
+                    <span>Foundation</span>
+                </button>
+                <button class="diagnostic-pill" data-section="success-factors">
+                    <span class="pill-number">3</span>
+                    <span>Success Factors</span>
+                </button>
+                <button class="diagnostic-pill" data-section="action">
+                    <span class="pill-number">4</span>
+                    <span>Action Plan</span>
+                </button>
+            </div>
+            <div class="sub-pill-container" id="success-factors-subpills" style="display: none;">
+                <button class="diagnostic-sub-pill" data-section="alignment">
+                    <span class="pill-number">3.1</span>
+                    <span>Alignment</span>
+                </button>
+                <button class="diagnostic-sub-pill" data-section="adoption">
+                    <span class="pill-number">3.2</span>
+                    <span>Adoption</span>
+                </button>
+                <button class="diagnostic-sub-pill" data-section="performance">
+                    <span class="pill-number">3.3</span>
+                    <span>Performance Optimization</span>
+                </button>
+                <button class="diagnostic-sub-pill" data-section="improvement">
+                    <span class="pill-number">3.4</span>
+                    <span>Continuous Improvement</span>
+                </button>
+            </div>
+            <div class="content-area">
+                <div id="content-summary" class="content-section">
+                    <!-- Summary Option 1: High Performance -->
+                    <div class="summary-option" data-option="high" style="display: block;">
+                        <div class="summary-content-wrapper">
+                            <div class="summary-text">
+                                <h2 style="color:#fc766a!important;">Your AMS Foundation is Strong. Time to Accelerate.</h2>
+                                <p>Congratulations! You've done the hard work of building a solid AMS foundation, and your organization is positioned to leverage your system as a true strategic asset. The opportunity ahead isn't about fixing problems; it's about capitalizing on momentum and staying ahead of the curve.</p>
+
+                                <h4>Overall Score: 85/100</h4>
+                                <p>Your organization demonstrates strong capabilities across Foundation, Success Factors, and Action Planning.</p>
+
+                                <h4>Key Highlights:</h4>
+                                <ul>
+                                    <li><strong>Strengths:</strong> All areas performing at or above target levels</li>
+                                    <li><strong>Opportunities:</strong> Fine-tune optimization and innovation initiatives</li>
+                                    <li><strong>Priority Actions:</strong> Focus on scaling best practices and continuous excellence</li>
+                                </ul>
+
+                                <p>Navigate through each section to explore your achievements and opportunities for excellence.</p>
+                            </div>
+                            <div class="summary-image">
+                                <img src="~/img/summary.png" alt="Success and Growth" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Option 2: Medium Performance -->
+                    <div class="summary-option" data-option="medium" style="display: none;">
+                        <div class="summary-content-wrapper">
+                            <div class="summary-text">
+                                <h2>Summary - Medium Performance</h2>
+                                <p>Welcome to your AMS Success Diagnostic Results. This assessment shows solid foundation with targeted improvement opportunities.</p>
+
+                                <h4>Overall Score: 72/100</h4>
+                                <p>Your organization demonstrates strong foundational capabilities with opportunities for improvement in adoption and continuous improvement practices.</p>
+
+                                <h4>Key Highlights:</h4>
+                                <ul>
+                                    <li><strong>Strengths:</strong> Foundation and alignment are well-established</li>
+                                    <li><strong>Opportunities:</strong> Focus on adoption rates and performance optimization</li>
+                                    <li><strong>Priority Actions:</strong> Implement structured action plan for improvement areas</li>
+                                </ul>
+
+                                <p>Navigate through each section to explore detailed findings and recommendations for your AMS journey.</p>
+                            </div>
+                            <div class="summary-image">
+                                <img src="~/img/summary.png" alt="Success and Growth" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Option 3: Low Performance -->
+                    <div class="summary-option" data-option="low" style="display: none;">
+                        <div class="summary-content-wrapper">
+                            <div class="summary-text">
+                                <h2>Summary - Development Opportunity</h2>
+                                <p>Your AMS Success Diagnostic Results identify significant opportunities to strengthen your Account Management System.</p>
+
+                                <h4>Overall Score: 45/100</h4>
+                                <p>Your organization has foundational elements in place but requires focused investment across multiple dimensions.</p>
+
+                                <h4>Key Highlights:</h4>
+                                <ul>
+                                    <li><strong>Focus Areas:</strong> Foundation building, process documentation, and team enablement</li>
+                                    <li><strong>Critical Priorities:</strong> Establish core infrastructure and basic workflows</li>
+                                    <li><strong>Quick Wins:</strong> Start with foundational improvements to build momentum</li>
+                                </ul>
+
+                                <p>This diagnostic provides a roadmap for transforming your AMS capabilities. Navigate through each section for specific guidance.</p>
+                            </div>
+                            <div class="summary-image">
+                                <img src="~/img/summary.png" alt="Success and Growth" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="content-foundation" class="content-section" style="display: none;">
+                    <h2>Foundation</h2>
+                    <p>The Foundation pillar assesses the core infrastructure and organizational readiness for your Account Management System.</p>
+
+                    <h4>Score: 85/100</h4>
+
+                    <h4>Key Findings:</h4>
+                    <ul>
+                        <li><strong>Technology Infrastructure:</strong> Excellent - CRM systems and tools are properly configured and integrated</li>
+                        <li><strong>Process Documentation:</strong> Good - Core processes are documented with minor gaps in edge cases</li>
+                        <li><strong>Team Structure:</strong> Strong - Clear roles and responsibilities established</li>
+                        <li><strong>Data Quality:</strong> Above Average - Customer data is generally clean with ongoing maintenance</li>
+                    </ul>
+
+                    <h4>Recommendations:</h4>
+                    <ol>
+                        <li>Complete process documentation for edge case scenarios</li>
+                        <li>Implement automated data quality checks</li>
+                        <li>Enhance integration capabilities with external systems</li>
+                    </ol>
+                </div>
+
+                <div id="content-success-factors" class="content-section" style="display: none;">
+                    <h2>Success Factors Overview</h2>
+                    <p>The Success Factors represent critical dimensions that drive AMS effectiveness. These four interconnected areas determine your overall AMS maturity and impact.</p>
+
+                    <h4>Composite Score: 68/100</h4>
+
+                    <div style="margin-top: 1.5rem;">
+                        <p><strong>Select a specific success factor above to view detailed analysis:</strong></p>
+                        <ul>
+                            <li><strong>3.1 Alignment:</strong> Strategic and operational alignment across the organization</li>
+                            <li><strong>3.2 Adoption:</strong> User engagement and system utilization rates</li>
+                            <li><strong>3.3 Performance Optimization:</strong> Efficiency metrics and continuous improvement</li>
+                            <li><strong>3.4 Continuous Improvement:</strong> Feedback loops and iterative enhancement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="content-alignment" class="content-section" style="display: none;">
+                    <h2>Alignment</h2>
+                    <p>Alignment measures how well your AMS strategy connects with business objectives and stakeholder needs.</p>
+
+                    <h4>Score: 78/100</h4>
+
+                    <h4>Strategic Alignment:</h4>
+                    <ul>
+                        <li><strong>Executive Sponsorship:</strong> Strong - Leadership actively supports AMS initiatives</li>
+                        <li><strong>Business Objectives:</strong> Well-aligned - AMS goals clearly tied to company strategy</li>
+                        <li><strong>Cross-functional Collaboration:</strong> Good - Regular coordination between departments</li>
+                        <li><strong>Customer Focus:</strong> Excellent - Customer needs drive AMS priorities</li>
+                    </ul>
+
+                    <h4>Operational Alignment:</h4>
+                    <ul>
+                        <li><strong>Process Integration:</strong> Above Average - AMS workflows integrate with other systems</li>
+                        <li><strong>Resource Allocation:</strong> Good - Appropriate staffing and budget</li>
+                        <li><strong>Metrics Alignment:</strong> Fair - Some KPIs need better connection to business outcomes</li>
+                    </ul>
+
+                    <h4>Recommendations:</h4>
+                    <ol>
+                        <li>Refine KPI framework to better reflect business impact</li>
+                        <li>Establish quarterly business review process</li>
+                        <li>Create alignment scorecards for ongoing monitoring</li>
+                    </ol>
+                </div>
+
+                <div id="content-adoption" class="content-section" style="display: none;">
+                    <h2>Adoption</h2>
+                    <p>Adoption evaluates how effectively your team uses the AMS and embraces best practices.</p>
+
+                    <h4>Score: 62/100</h4>
+
+                    <h4>Usage Metrics:</h4>
+                    <ul>
+                        <li><strong>Active Users:</strong> 68% - Below target of 85%</li>
+                        <li><strong>Daily Engagement:</strong> Fair - Average of 2.3 hours per day</li>
+                        <li><strong>Feature Utilization:</strong> Moderate - Core features widely used, advanced features underutilized</li>
+                        <li><strong>Mobile Adoption:</strong> Low - Only 23% use mobile app regularly</li>
+                    </ul>
+
+                    <h4>Behavioral Indicators:</h4>
+                    <ul>
+                        <li><strong>Training Completion:</strong> 71% - Good but room for improvement</li>
+                        <li><strong>Best Practice Adherence:</strong> Variable - Inconsistent across teams</li>
+                        <li><strong>User Satisfaction:</strong> 7.2/10 - Generally positive with specific pain points</li>
+                    </ul>
+
+                    <h4>Recommendations:</h4>
+                    <ol>
+                        <li>Launch targeted adoption campaign for underutilized features</li>
+                        <li>Implement gamification to increase engagement</li>
+                        <li>Provide role-specific training paths</li>
+                        <li>Address mobile app usability issues</li>
+                        <li>Establish power user program and champions network</li>
+                    </ol>
+                </div>
+
+                <div id="content-performance" class="content-section" style="display: none;">
+                    <h2>Performance Optimization</h2>
+                    <p>Performance Optimization assesses the efficiency and effectiveness of your AMS operations.</p>
+
+                    <h4>Score: 70/100</h4>
+
+                    <h4>Efficiency Metrics:</h4>
+                    <ul>
+                        <li><strong>Response Time:</strong> Good - Average response within 4 hours (target: 3 hours)</li>
+                        <li><strong>Case Resolution:</strong> Above Average - 78% first-contact resolution</li>
+                        <li><strong>Automation Rate:</strong> Fair - 45% of routine tasks automated</li>
+                        <li><strong>Data Processing:</strong> Excellent - Real-time sync across systems</li>
+                    </ul>
+
+                    <h4>Effectiveness Indicators:</h4>
+                    <ul>
+                        <li><strong>Customer Satisfaction:</strong> 8.1/10 - Strong performance</li>
+                        <li><strong>Account Growth:</strong> Good - 12% average expansion rate</li>
+                        <li><strong>Retention Rate:</strong> Excellent - 94% annual retention</li>
+                        <li><strong>Upsell Success:</strong> Moderate - 34% conversion on opportunities</li>
+                    </ul>
+
+                    <h4>Recommendations:</h4>
+                    <ol>
+                        <li>Implement AI-powered response suggestions to reduce response time</li>
+                        <li>Automate 20 additional routine workflows</li>
+                        <li>Create performance dashboards for real-time monitoring</li>
+                        <li>Optimize upsell playbooks based on successful patterns</li>
+                        <li>Establish performance benchmarking against industry standards</li>
+                    </ol>
+                </div>
+
+                <div id="content-improvement" class="content-section" style="display: none;">
+                    <h2>Continuous Improvement</h2>
+                    <p>Continuous Improvement measures your organization's capability to learn, adapt, and enhance AMS practices over time.</p>
+
+                    <h4>Score: 58/100</h4>
+
+                    <h4>Feedback Mechanisms:</h4>
+                    <ul>
+                        <li><strong>Customer Feedback:</strong> Good - Regular surveys and feedback collection</li>
+                        <li><strong>User Feedback:</strong> Fair - Ad-hoc collection, lacks systematic approach</li>
+                        <li><strong>Feedback Analysis:</strong> Weak - Limited analysis and action on feedback</li>
+                        <li><strong>Iteration Speed:</strong> Slow - Average 4-6 months for improvements</li>
+                    </ul>
+
+                    <h4>Learning Culture:</h4>
+                    <ul>
+                        <li><strong>Innovation Programs:</strong> Limited - Few structured innovation initiatives</li>
+                        <li><strong>Knowledge Sharing:</strong> Moderate - Some sharing but not systematic</li>
+                        <li><strong>Experimentation:</strong> Low - Risk-averse culture limits testing</li>
+                        <li><strong>Best Practice Documentation:</strong> Fair - Inconsistent documentation</li>
+                    </ul>
+
+                    <h4>Recommendations:</h4>
+                    <ol>
+                        <li>Establish formal continuous improvement framework (e.g., Kaizen, Agile)</li>
+                        <li>Create quarterly improvement cycles with clear metrics</li>
+                        <li>Implement systematic feedback collection and analysis</li>
+                        <li>Launch innovation lab for AMS experimentation</li>
+                        <li>Build knowledge management system for best practices</li>
+                        <li>Reduce improvement cycle time to 6-8 weeks</li>
+                    </ol>
+                </div>
+
+                <div id="content-action" class="content-section" style="display: none;">
+                    <h2>Action Plan</h2>
+                    <p>Based on your diagnostic results, here is a prioritized action plan to enhance your AMS maturity.</p>
+
+                    <h4>Immediate Actions (0-30 days):</h4>
+                    <ol>
+                        <li><strong>Launch Adoption Campaign:</strong> Focus on underutilized features and mobile app
+                            <ul>
+                                <li>Owner: Training Manager</li>
+                                <li>Resources: Training materials, communication templates</li>
+                                <li>Target: Increase active users to 75%</li>
+                            </ul>
+                        </li>
+                        <li><strong>Establish Performance Dashboards:</strong> Create real-time visibility into key metrics
+                            <ul>
+                                <li>Owner: Analytics Lead</li>
+                                <li>Resources: BI tools, data integration</li>
+                                <li>Target: Executive dashboard live within 30 days</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Short-term Actions (30-90 days):</h4>
+                    <ol start="3">
+                        <li><strong>Implement Automation Workflows:</strong> Automate 20 routine processes
+                            <ul>
+                                <li>Owner: Operations Manager</li>
+                                <li>Resources: Workflow automation tools</li>
+                                <li>Target: Reduce manual effort by 25%</li>
+                            </ul>
+                        </li>
+                        <li><strong>Refine KPI Framework:</strong> Align metrics with business outcomes
+                            <ul>
+                                <li>Owner: Strategy Lead</li>
+                                <li>Resources: Stakeholder workshops</li>
+                                <li>Target: New KPI framework approved and implemented</li>
+                            </ul>
+                        </li>
+                        <li><strong>Launch Power User Program:</strong> Create champions network
+                            <ul>
+                                <li>Owner: Enablement Manager</li>
+                                <li>Resources: Recognition program, training materials</li>
+                                <li>Target: 15 certified power users</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Medium-term Actions (90-180 days):</h4>
+                    <ol start="6">
+                        <li><strong>Establish Continuous Improvement Framework:</strong> Implement structured improvement cycles
+                            <ul>
+                                <li>Owner: Process Excellence Lead</li>
+                                <li>Resources: Methodology training, tools</li>
+                                <li>Target: First improvement cycle completed</li>
+                            </ul>
+                        </li>
+                        <li><strong>Optimize Upsell Playbooks:</strong> Enhance conversion rates
+                            <ul>
+                                <li>Owner: Sales Enablement</li>
+                                <li>Resources: Historical data analysis, best practices</li>
+                                <li>Target: Increase upsell conversion to 42%</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Long-term Actions (180+ days):</h4>
+                    <ol start="8">
+                        <li><strong>Launch Innovation Lab:</strong> Create experimentation environment
+                            <ul>
+                                <li>Owner: Innovation Director</li>
+                                <li>Resources: Budget, sandbox environment</li>
+                                <li>Target: 3 pilot programs launched</li>
+                            </ul>
+                        </li>
+                        <li><strong>Build Knowledge Management System:</strong> Centralize best practices
+                            <ul>
+                                <li>Owner: Knowledge Manager</li>
+                                <li>Resources: Platform, content migration</li>
+                                <li>Target: 80% of best practices documented</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h4>Success Metrics:</h4>
+                    <ul>
+                        <li>Overall AMS Maturity Score: Increase from 72 to 85 within 12 months</li>
+                        <li>Active User Rate: Increase from 68% to 85%</li>
+                        <li>Customer Satisfaction: Maintain above 8.0/10</li>
+                        <li>Retention Rate: Maintain above 92%</li>
+                        <li>Improvement Cycle Time: Reduce from 4-6 months to 6-8 weeks</li>
+                    </ul>
+
+                    <p><strong>Next Steps:</strong> Schedule kick-off meeting with action owners within 5 business days to begin implementation.</p>
+                </div>
+            </div>
+        </div>
+        <div class="results-footer">
+            &copy; Achurch Consulting. All Rights Reserved.
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            console.log('Pills found:', $('.diagnostic-pill').length);
+            console.log('Sub-pills found:', $('.diagnostic-sub-pill').length);
+
+            // Main pill navigation
+            $('.diagnostic-pill').on('click', function(e) {
+                e.preventDefault();
+                const section = $(this).data('section');
+                console.log('Clicked main pill:', section);
+
+                // Remove active class from all pills
+                $('.diagnostic-pill').removeClass('active');
+                $('.diagnostic-sub-pill').removeClass('active');
+
+                // Add active class to clicked pill
+                $(this).addClass('active');
+
+                // Hide all content sections
+                $('.content-section').hide();
+
+                // Show/hide sub-pills based on selection
+                if (section === 'success-factors') {
+                    console.log('Showing success factors');
+                    $('#success-factors-subpills').slideDown(300);
+                    $('#content-success-factors').show();
+                } else {
+                    console.log('Showing section:', section);
+                    $('#success-factors-subpills').slideUp(300);
+                    const contentId = '#content-' + section;
+                    console.log('Content element:', contentId, $(contentId).length);
+                    $(contentId).show();
+                }
+            });
+
+            // Sub-pill navigation
+            $('.diagnostic-sub-pill').on('click', function(e) {
+                e.preventDefault();
+                const section = $(this).data('section');
+                console.log('Clicked sub-pill:', section);
+
+                // Remove active class from all sub-pills
+                $('.diagnostic-sub-pill').removeClass('active');
+
+                // Add active class to clicked sub-pill
+                $(this).addClass('active');
+
+                // Hide all content sections
+                $('.content-section').hide();
+
+                // Show the selected content section
+                const contentId = '#content-' + section;
+                console.log('Showing content:', contentId);
+                $(contentId).show();
+            });
+        });
+    </script>
+}

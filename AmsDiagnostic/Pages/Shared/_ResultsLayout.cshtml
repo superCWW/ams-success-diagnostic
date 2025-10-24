@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AMS Diagnostic</title>
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/vendor/css/core.dist.css" />
+    <link rel="stylesheet" href="~/css/site.dist.css" />
+    <link rel="stylesheet" href="~/css/demo.css" />
+
+    <style>
+        body {
+            background-color: #f3f2f3;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .results-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.25rem 1.125rem rgba(75, 70, 92, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .results-header {
+            padding: 0;
+            border-radius: 0.5rem 0.5rem 0 0;
+            overflow: hidden;
+            border-bottom: 1px solid #e6e6e8;
+        }
+
+        .results-header img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .results-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .pill-container {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: #fcfcfc;
+            border-radius: 0.375rem;
+            border: 1px solid #e6e6e8;
+        }
+
+        .diagnostic-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.625rem 1.25rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 2px solid #e6e6e8;
+            background-color: white;
+            color: #6d6b77;
+            white-space: nowrap;
+        }
+
+        .diagnostic-pill .pill-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background-color: #e6e6e8;
+            color: #6d6b77;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .diagnostic-pill:hover {
+            border-color: #5bbea4;
+            background-color: rgba(91, 190, 164, 0.08);
+            color: #5bbea4;
+        }
+
+        .diagnostic-pill:hover .pill-number {
+            background-color: #5bbea4;
+            color: white;
+        }
+
+        .diagnostic-pill.active {
+            background-color: #5bbea4;
+            border-color: #5bbea4;
+            color: white;
+            box-shadow: 0 0.125rem 0.25rem rgba(91, 190, 164, 0.4);
+        }
+
+        .diagnostic-pill.active .pill-number {
+            background-color: white;
+            color: #5bbea4;
+        }
+
+        .sub-pill-container {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e6e6e8;
+        }
+
+        .diagnostic-sub-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 1.5rem;
+            font-weight: 500;
+            font-size: 0.8125rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid #e6e6e8;
+            background-color: #f8f8f8;
+            color: #6d6b77;
+            white-space: nowrap;
+        }
+
+        .diagnostic-sub-pill .pill-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2rem;
+            height: 1.25rem;
+            border-radius: 0.75rem;
+            background-color: #e6e6e8;
+            color: #6d6b77;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0 0.375rem;
+        }
+
+        .diagnostic-sub-pill:hover {
+            border-color: #5bbea4;
+            background-color: rgba(91, 190, 164, 0.08);
+            color: #5bbea4;
+        }
+
+        .diagnostic-sub-pill:hover .pill-number {
+            background-color: #5bbea4;
+            color: white;
+        }
+
+        .diagnostic-sub-pill.active {
+            background-color: rgba(91, 190, 164, 0.15);
+            border-color: #5bbea4;
+            color: #5bbea4;
+        }
+
+        .diagnostic-sub-pill.active .pill-number {
+            background-color: #5bbea4;
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @@media (max-width: 768px) {
+            .results-body {
+                padding: 1rem;
+            }
+
+            .pill-container {
+                gap: 0.5rem;
+            }
+
+            .diagnostic-pill {
+                font-size: 0.8125rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .diagnostic-pill .pill-number {
+                width: 1.25rem;
+                height: 1.25rem;
+                font-size: 0.7rem;
+            }
+
+            .content-area {
+                padding: 1rem;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            .results-body {
+                padding: 0.75rem;
+            }
+
+            .pill-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .diagnostic-pill {
+                justify-content: flex-start;
+                width: 100%;
+            }
+        }
+
+        .results-footer {
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #6d6b77;
+            font-size: 0.875rem;
+            border-top: 1px solid #e6e6e8;
+            background-color: #fff;
+            border-radius: 0 0 0.5rem 0.5rem;
+        }
+
+        /* Summary content layout with image */
+        .summary-content-wrapper {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .summary-text {
+            flex: 1;
+            order: 2;
+        }
+
+        .summary-image {
+            flex-shrink: 0;
+            width: 280px;
+            order: 1;
+        }
+
+        .summary-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+        }
+
+        @@media (max-width: 992px) {
+            .summary-content-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .summary-image {
+                width: 220px;
+                order: -1;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            .summary-image {
+                width: 180px;
+            }
+        }
+    </style>
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    @RenderBody()
+
+    <!-- Core JS -->
+    <script src="~/vendor/libs/jquery/jquery.dist.js"></script>
+    <script src="~/vendor/js/bootstrap.dist.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
