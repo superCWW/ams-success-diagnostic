@@ -228,7 +228,7 @@
             color: #6d6b77;
             font-size: 0.875rem;
             border-top: 1px solid #e6e6e8;
-            background-color: #fff;
+            background-color: #f3f2f3;
             border-radius: 0 0 0.5rem 0.5rem;
         }
 
@@ -273,6 +273,80 @@
             .summary-image {
                 width: 180px;
             }
+        }
+
+        /* General content layout with image (for all sections except summary) */
+        .content-wrapper {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .content-text {
+            flex: 1;
+            order: 2 !important;
+        }
+
+        .content-image {
+            flex-shrink: 0;
+            width: 280px;
+            order: 1 !important;
+        }
+
+        .content-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+        }
+
+        @@media (max-width: 992px) {
+            .content-wrapper {
+                flex-direction: column !important;
+                align-items: center;
+            }
+
+            .content-image {
+                width: 220px;
+                order: -1 !important;
+            }
+
+            .content-text {
+                order: 0 !important;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            .content-image {
+                width: 180px;
+            }
+        }
+
+        /* Alert styling */
+        .alert {
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.375rem;
+        }
+
+        .alert-info {
+            background-color: rgba(91, 190, 164, 0.1);
+            border-color: rgba(91, 190, 164, 0.3);
+            color: #2d6d5e;
+        }
+
+        .alert-heading {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d6d5e;
+        }
+
+        .mb-0 {
+            margin-bottom: 0 !important;
         }
     </style>
 
