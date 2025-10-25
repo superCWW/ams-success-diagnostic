@@ -1,0 +1,172 @@
+@page
+@model AmsDiagnostic.Pages.DebugModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Qualtrics Debug - Response Viewer</title>
+    <style>
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin: 0;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #4ec9b0;
+            margin-bottom: 10px;
+        }
+        .info {
+            background: #2d2d30;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007acc;
+        }
+        .error {
+            background: #2d2d30;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #f48771;
+            color: #f48771;
+        }
+        .json-container {
+            background: #2d2d30;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .key {
+            color: #9cdcfe;
+        }
+        .string {
+            color: #ce9178;
+        }
+        .number {
+            color: #b5cea8;
+        }
+        .boolean {
+            color: #569cd6;
+        }
+        .null {
+            color: #569cd6;
+        }
+        .form-container {
+            background: #2d2d30;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 400px;
+            padding: 8px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            color: #d4d4d4;
+            border-radius: 3px;
+        }
+        button {
+            padding: 8px 20px;
+            background: #007acc;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        .parsed-data {
+            margin-top: 20px;
+        }
+        .parsed-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #3c3c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Qualtrics Response Viewer</h1>
+
+        <div class="form-container">
+            <form method="get">
+                <label for="response">Response ID:</label>
+                <input type="text" id="response" name="response" value="@Model.ResponseId" placeholder="R_XXXXXXXXXXXXX" />
+                <button type="submit">Load Response</button>
+            </form>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="error">
+                <strong>Error:</strong> @Model.ErrorMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.ResponseId))
+        {
+            <div class="info">
+                <strong>Response ID:</strong> @Model.ResponseId<br/>
+                <strong>Survey ID:</strong> @Model.SurveyId<br/>
+                <strong>Data Center:</strong> @Model.DataCenter<br/>
+                <strong>Status:</strong> @(Model.RawJson != null ? "✅ Data Loaded" : "❌ No Data")
+            </div>
+        }
+
+        @if (Model.RawJson != null)
+        {
+            <h2>Raw JSON Response</h2>
+            <div class="json-container">
+                <pre>@Model.RawJson</pre>
+            </div>
+
+            @if (Model.ParsedAnswers != null && Model.ParsedAnswers.Count > 0)
+            {
+                <div class="parsed-data">
+                    <h2>Parsed Survey Answers (@Model.ParsedAnswers.Count items)</h2>
+                    <div class="json-container">
+                        @foreach (var answer in Model.ParsedAnswers.OrderBy(x => x.Key))
+                        {
+                            <div class="parsed-item">
+                                <span class="key">@answer.Key:</span> <span class="string">@answer.Value</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else if (!string.IsNullOrEmpty(Model.ResponseId))
+        {
+            <div class="info">
+                <p>No data loaded. Please check:</p>
+                <ul>
+                    <li>Your API token is set correctly in appsettings.json</li>
+                    <li>The response ID exists in your Qualtrics survey</li>
+                    <li>The survey ID (SV_1zyYQ9I5tRHvNNc) is correct</li>
+                    <li>The data center (iad1) is correct</li>
+                </ul>
+            </div>
+        }
+        else
+        {
+            <div class="info">
+                <p>Enter a Qualtrics response ID above to view the survey response data.</p>
+                <p><strong>Example:</strong> R_3qGpBaXT9K8j2Ef</p>
+            </div>
+        }
+    </div>
+</body>
+</html>

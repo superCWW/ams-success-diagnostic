@@ -4,7 +4,7 @@
     Layout = "_ResultsLayout";
     ViewData["Title"] = "AMS Diagnostic Results";
 }
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 <div class="results-container">
     <div class="results-card">
         <div class="results-header">
@@ -49,7 +49,7 @@
             </div>
 
             <!-- Success Factors Alert (shown only when Success Factors is active) -->
-            <div id="success-factors-alert" class="alert alert-info" style="display: none; margin-top: 1.5rem;">
+            <div id="success-factors-alert" class="alert alert-info" style="display: none;">
                 <h5 class="alert-heading">About Success Factors</h5>
                 <p class="mb-0">Success Factors represent the four critical dimensions that drive AMS effectiveness: Alignment, Adoption, Performance Optimization, and Continuous Improvement. These interconnected areas determine your overall AMS maturity and business impact.</p>
             </div>
@@ -62,19 +62,8 @@
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
                                 <h2>Your AMS Foundation is Strong. Time to Accelerate.</h2>
-                                <p>Congratulations! You've done the hard work of building a solid AMS foundation, and your organization is positioned to leverage your system as a true strategic asset. The opportunity ahead isn't about fixing problems; it's about capitalizing on momentum and staying ahead of the curve.</p>
-
-                                <h4>Overall Score: 85/100</h4>
-                                <p>Your organization demonstrates strong capabilities across Foundation, Success Factors, and Action Planning.</p>
-
-                                <h4>Key Highlights:</h4>
-                                <ul>
-                                    <li><strong>Strengths:</strong> All areas performing at or above target levels</li>
-                                    <li><strong>Opportunities:</strong> Fine-tune optimization and innovation initiatives</li>
-                                    <li><strong>Priority Actions:</strong> Focus on scaling best practices and continuous excellence</li>
-                                </ul>
-
-                                <p>Navigate through each section to explore your achievements and opportunities for excellence.</p>
+                                <p>Congratulations! You've done the hard work of building a solid AMS foundation, and your organization is positioned to leverage your system as a true strategic asset.</p> 
+                                <p>The opportunity ahead isn't about fixing problems; it's about capitalizing on momentum and staying ahead of the curve.</p>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/summary.png" alt="Success and Growth" />
@@ -86,20 +75,10 @@
                     <div class="summary-option" data-option="medium" style="display: none;">
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
-                                <h2>Summary - Medium Performance</h2>
-                                <p>Welcome to your AMS Success Diagnostic Results. This assessment shows solid foundation with targeted improvement opportunities.</p>
-
-                                <h4>Overall Score: 72/100</h4>
-                                <p>Your organization demonstrates strong foundational capabilities with opportunities for improvement in adoption and continuous improvement practices.</p>
-
-                                <h4>Key Highlights:</h4>
-                                <ul>
-                                    <li><strong>Strengths:</strong> Foundation and alignment are well-established</li>
-                                    <li><strong>Opportunities:</strong> Focus on adoption rates and performance optimization</li>
-                                    <li><strong>Priority Actions:</strong> Implement structured action plan for improvement areas</li>
-                                </ul>
-
-                                <p>Navigate through each section to explore detailed findings and recommendations for your AMS journey.</p>
+                                <h2>You're On the Right Track. Clear Opportunities Ahead. </h2>
+<p>You're past the survival stage and ready for the optimizations that deliver measurable impact.</p>
+<p>The path forward is clear: targeted improvements that compound over time.</p>
+<p>Now it's about strategic refinement, not firefighting.</p>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/summary.png" alt="Success and Growth" />
@@ -111,20 +90,11 @@
                     <div class="summary-option" data-option="low" style="display: none;">
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
-                                <h2>Summary - Development Opportunity</h2>
-                                <p>Your AMS Success Diagnostic Results identify significant opportunities to strengthen your Account Management System.</p>
+                                <h2>You've Identified the Gaps. Time to Close Them. </h2>
+<p>Every high-performing AMS implementation started exactly where you are. The difference is having a clear roadmap and the right support.</p> 
+<p>You've taken the critical first step by understanding where the opportunities and gaps lie.  </p>
+<p>You're in the perfect position to transform your AMS from "just a database" into a competitive advantage. </p>
 
-                                <h4>Overall Score: 45/100</h4>
-                                <p>Your organization has foundational elements in place but requires focused investment across multiple dimensions.</p>
-
-                                <h4>Key Highlights:</h4>
-                                <ul>
-                                    <li><strong>Focus Areas:</strong> Foundation building, process documentation, and team enablement</li>
-                                    <li><strong>Critical Priorities:</strong> Establish core infrastructure and basic workflows</li>
-                                    <li><strong>Quick Wins:</strong> Start with foundational improvements to build momentum</li>
-                                </ul>
-
-                                <p>This diagnostic provides a roadmap for transforming your AMS capabilities. Navigate through each section for specific guidance.</p>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/summary.png" alt="Success and Growth" />
@@ -139,25 +109,20 @@
                     <div class="summary-option" data-option="high" style="display: block;">
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
-                                <h2>Foundation - High Performance</h2>
-                                <p>Exceptional! Your AMS foundation is world-class, providing a rock-solid platform for strategic growth.</p>
+                                <h2>Foundation is Solid, Time to Scale</h2>
 
-                                <h4>Score: 90/100</h4>
+                                <h4>Where You Stand</h4>
+                                <p>Your foundational elements are solid. You have the basic infrastructure in place to support take your AMS success to the next level. </p>
 
-                                <h4>Key Strengths:</h4>
+                                <h4>The Opportunity</h4>
+                                <p>With strong fundamentals, you can focus on optimization and innovation rather than firefighting. Your foundation supports sustainable growth. </p>
+
+                                <h4>Next Steps and Quick Wins</h4>
                                 <ul>
-                                    <li><strong>Technology Infrastructure:</strong> Excellent - Fully integrated CRM with advanced automation</li>
-                                    <li><strong>Process Documentation:</strong> Comprehensive - All processes documented and regularly updated</li>
-                                    <li><strong>Team Structure:</strong> Optimal - Clear roles, adequate staffing, strong capabilities</li>
-                                    <li><strong>Data Quality:</strong> Excellent - Clean, accurate data with automated quality controls</li>
+                                    <li class="py-2">Identify one or two opportunities to use AI to simplify business processes </li>
+                                    <li class="py-2">Mine member engagement data to reveal hidden areas of interest to use for marketing, education and community discussion topics  </li>
+                                    <li class="py-2">Investigate additional ways to enable AMS functional</li>
                                 </ul>
-
-                                <h4>Recommendations:</h4>
-                                <ol>
-                                    <li>Continue innovation with AI and predictive analytics</li>
-                                    <li>Share best practices across the organization</li>
-                                    <li>Explore advanced integrations and automation opportunities</li>
-                                </ol>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/foundation.png" alt="Foundation" />
@@ -169,26 +134,21 @@
                     <div class="summary-option" data-option="medium" style="display: none;">
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
-                                <h2>Foundation - Medium Performance</h2>
-                                <p>Your AMS foundation is solid with clear opportunities for enhancement.</p>
+                                <h2>Foundation in Progress, Time to Close Gaps </h2>
 
-                                <h4>Score: 72/100</h4>
+                                <h4>Where You Stand</h4>
+                                <p>You have some foundational elements in place, but there are gaps that could limit your future success.</p>
 
-                                <h4>Key Findings:</h4>
+                                <h4>The Opportunity</h4>
+                                <p>Strengthening your foundation now prevents bigger problems later. Small investments in fundamentals create exponential returns. </p>
+
+                                <h4>Next Steps and Quick Wins</h4>
                                 <ul>
-                                    <li><strong>Technology Infrastructure:</strong> Good - Core systems in place, some integration gaps</li>
-                                    <li><strong>Process Documentation:</strong> Fair - Key processes documented, need more detail</li>
-                                    <li><strong>Team Structure:</strong> Good - Roles defined, some capacity constraints</li>
-                                    <li><strong>Data Quality:</strong> Fair - Generally clean but needs improvement</li>
+                                    <li class="py-2">Create (or update) SOPs for areas that routinely cause confusion or avoidance </li>
+                                    <li class="py-2">Create (or revive) a cross-departmental stakeholder alliance to provide governance for the AMS and amplify the importance of using it to its full capabilities </li>
+                                    <li class="py-2">Initiate a data cleanup calendar, timed to help ensure data is accurate prior to large outreach initiatives (e.g. membership renewals, opening annual conference registration)</li>
                                 </ul>
 
-                                <h4>Recommendations:</h4>
-                                <ol>
-                                    <li>Complete process documentation initiative</li>
-                                    <li>Invest in team training and capacity building</li>
-                                    <li>Implement data quality improvement program</li>
-                                    <li>Evaluate technology stack for integration opportunities</li>
-                                </ol>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/foundation.png" alt="Foundation" />
@@ -200,26 +160,21 @@
                     <div class="summary-option" data-option="low" style="display: none;">
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
-                                <h2>Foundation - Development Needed</h2>
-                                <p>Your AMS foundation needs strengthening. Focus here will yield significant returns.</p>
+                                <h2>Time to Build a Lasting Foundation</h2>
 
-                                <h4>Score: 45/100</h4>
+                                <h4>Where You Stand</h4>
+                                <p>Your foundational elements need attention. Without these building blocks, other improvements will be difficult to implement and sustain.</p>
 
-                                <h4>Critical Gaps:</h4>
+                                <h4>The Opportunity</h4>
+                                <p>Addressing foundational gaps creates immediate relief and unlocks everything else. This is where the biggest quick wins live. </p>
+
+                                <h4>Next Steps and Quick Wins</h4>
                                 <ul>
-                                    <li><strong>Technology Infrastructure:</strong> Basic tools in place, limited integration</li>
-                                    <li><strong>Process Documentation:</strong> Minimal - Many undocumented processes</li>
-                                    <li><strong>Team Structure:</strong> Unclear roles and responsibilities</li>
-                                    <li><strong>Data Quality:</strong> Poor - Significant cleanup needed</li>
+<li class="py-2">Prepare for future upgrades; create onea calendar to track upgrade dates and document replicable testing processes </li>
+<li class="py-2">Build a feedback loop and resolution process to receive AMS issues and wish list items </li>
+<li class="py-2">Create and execute a communication campaign to share new features in your AMS and (at least) monthly tips and tricks </li>
+ 
                                 </ul>
-
-                                <h4>Priority Actions:</h4>
-                                <ol>
-                                    <li>Conduct CRM needs assessment and implementation</li>
-                                    <li>Document core processes immediately</li>
-                                    <li>Define roles and hire key positions</li>
-                                    <li>Launch data cleanup initiative</li>
-                                </ol>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/foundation.png" alt="Foundation" />
@@ -252,25 +207,22 @@
                     <div class="summary-option" data-option="high" style="display: block;">
                         <div class="summary-content-wrapper">
                             <div class="summary-text">
-                                <h2>3.1 Alignment - High Performance</h2>
-                                <p>Outstanding! Your AMS strategy is exceptionally well-aligned with business objectives.</p>
+                    <h2>Everyone’s on Board, Time for Leverage</h2>
 
-                                <h4>Score: 88/100</h4>
+                    <h4>Where You Stand</h4>
+                    <p>Your organization demonstrates strong alignment around AMS strategy, ownership, and priorities. Leadership and staff are on the same page. </p>
 
-                                <h4>Strategic Alignment:</h4>
-                                <ul>
-                                    <li><strong>Executive Sponsorship:</strong> Excellent - C-suite actively champions AMS</li>
-                                    <li><strong>Business Objectives:</strong> Fully aligned - Clear line of sight to company goals</li>
-                                    <li><strong>Cross-functional Collaboration:</strong> Seamless integration across departments</li>
-                                    <li><strong>Customer Focus:</strong> Customer-centric approach drives all decisions</li>
-                                </ul>
+            <div id="success-factors-alert" class="alert alert-info" style="margin-top: 1.5rem;">
+                    <h4>The Opportunity</h4>
+                    <p>Leverage this alignment to tackle more ambitious initiatives. Your unified approach enables faster decision-making and smoother execution.</p>
+</div>
+                    <h4>Next Steps and Quick Wins</h4>
+                    <ul class="list-unstyled">
+  <li class="py-2 ps-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Strategic Alignment</strong>: Map your AMS’ capabilities to strategic priorities and add them to the overarching strategic roadmap </li>
+  <li class="py-2 ps-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Stakeholder Alignment:</strong> Initiate monthly/quarterly department head alignment sessions to ensure the AMS remains a leadership priority </li>
+  <li class="py-2 ps-3"><i class="bi bi-check-circle-fill text-success me-2"></i><strong>Resource Alignment:</strong> Prioritize AMS optimization as an ongoing, critical budget item</li>
+</ul>
 
-                                <h4>Recommendations:</h4>
-                                <ol>
-                                    <li>Share alignment best practices across organization</li>
-                                    <li>Continue quarterly strategic reviews</li>
-                                    <li>Maintain momentum through leadership engagement</li>
-                                </ol>
                             </div>
                             <div class="summary-image">
                                 <img src="~/img/alignment.png" alt="Alignment" />
@@ -820,6 +772,50 @@
                 console.log('Showing content:', contentId);
                 $(contentId).show();
             });
+        });
+
+        // Show/hide correct performance tiers based on server-side data
+        $(document).ready(function() {
+            var performanceTiers = {
+                summary: '@ViewData["Summary"]',
+                foundation: '@ViewData["Foundation"]',
+                alignment: '@ViewData["Alignment"]',
+                adoption: '@ViewData["Adoption"]',
+                performance: '@ViewData["Performance"]',
+                improvement: '@ViewData["Improvement"]',
+                actionPlan: '@ViewData["ActionPlan"]'
+            };
+
+            console.log('Performance tiers:', performanceTiers);
+
+            // Function to show correct performance tier for a section
+            function showCorrectTier(sectionId, tier) {
+                var $section = $('#content-' + sectionId);
+                if ($section.length === 0) return;
+
+                // Hide all options
+                $section.find('.summary-option').hide();
+
+                // Show the correct tier
+                var $tierOption = $section.find('.summary-option[data-option="' + tier + '"]');
+                if ($tierOption.length > 0) {
+                    $tierOption.show();
+                    console.log('Showing ' + tier + ' tier for ' + sectionId);
+                } else {
+                    // Fallback to high if tier not found
+                    $section.find('.summary-option[data-option="high"]').show();
+                    console.log('Tier not found for ' + sectionId + ', showing high as fallback');
+                }
+            }
+
+            // Apply performance tiers to each section
+            showCorrectTier('summary', performanceTiers.summary);
+            showCorrectTier('foundation', performanceTiers.foundation);
+            showCorrectTier('alignment', performanceTiers.alignment);
+            showCorrectTier('adoption', performanceTiers.adoption);
+            showCorrectTier('performance', performanceTiers.performance);
+            showCorrectTier('improvement', performanceTiers.improvement);
+            showCorrectTier('action', performanceTiers.actionPlan);
         });
     </script>
 }

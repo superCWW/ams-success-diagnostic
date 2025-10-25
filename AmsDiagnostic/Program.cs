@@ -1,10 +1,22 @@
 using AmsDiagnostic.Data;
+using AmsDiagnostic.Models;
+using AmsDiagnostic.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<DatabaseHelper>();
+
+// Configure Qualtrics settings
+builder.Services.Configure<QualtricsSettings>(
+    builder.Configuration.GetSection("Qualtrics"));
+
+// Register Qualtrics service with HttpClient
+builder.Services.AddHttpClient<QualtricsService>();
+
+// Register Scoring service
+builder.Services.AddScoped<ScoringService>();
 
 var app = builder.Build();
 

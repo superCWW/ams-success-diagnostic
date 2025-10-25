@@ -1,0 +1,223 @@
+@page
+@model AmsDiagnostic.Pages.CalculatingModel
+@{
+    Layout = "_ResultsLayout";
+    ViewData["Title"] = "Calculating Results";
+}
+
+<div class="results-container">
+    <div class="results-card">
+        <div class="results-header">
+            <img src="~/img/ams-diagnostic-header.png.png" alt="Your AMS Success Diagnostic Results" />
+        </div>
+        <div class="results-body">
+            <div class="calculating-container">
+                <h1 class="calculating-title">analyzing your responses...</h1>
+
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="progress-text">0%</div>
+                </div>
+
+                <div class="image-carousel">
+                    <img src="~/img/summary.png" alt="Summary" class="carousel-image active" />
+                    <img src="~/img/foundation.png" alt="Foundation" class="carousel-image" />
+                    <img src="~/img/alignment.png" alt="Alignment" class="carousel-image" />
+                    <img src="~/img/adoption.png" alt="Adoption" class="carousel-image" />
+                    <img src="~/img/optimization.png" alt="Performance" class="carousel-image" />
+                    <img src="~/img/improvement.png" alt="Improvement" class="carousel-image" />
+                    <img src="~/img/actionplan.png" alt="Action Plan" class="carousel-image" />
+                </div>
+            </div>
+        </div>
+        <div class="results-footer">
+            &copy; Achurch Consulting. All Rights Reserved.
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .calculating-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            padding: 3rem 2rem;
+        }
+
+        .calculating-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #4b465c;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e6e6e8;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #5bbea4 0%, #4aae94 100%);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 2px 4px rgba(91, 190, 164, 0.3);
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #5bbea4;
+        }
+
+        .image-carousel {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin-top: 2rem;
+        }
+
+        .carousel-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            border-radius: 0.5rem;
+        }
+
+        .carousel-image.active {
+            opacity: 1;
+        }
+
+        @@media (max-width: 768px) {
+            .calculating-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .calculating-container {
+                padding: 2rem 1rem;
+                min-height: 300px;
+            }
+
+            .image-carousel {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            .calculating-title {
+                font-size: 1.25rem;
+            }
+
+            .image-carousel {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            let progress = 0;
+            let currentImageIndex = 0;
+            let textIndex = 0;
+            const images = $('.carousel-image');
+            const totalImages = images.length;
+            const responseId = '@Model.ResponseId';
+
+            // Array of calculating messages to cycle through
+            const messages = [
+                'analyzing your responses...',
+                'processing diagnostic data...',
+                'evaluating foundational metrics...',
+                'evaluating success metrics...',
+                'generating personalized action plan...',
+                'finalizing your results...'
+            ];
+
+            // Pause points where progress will slow down (simulates intensive calculation)
+            const pausePoints = [15, 35, 58, 82];
+            let pauseIndex = 0;
+            let pauseCounter = 0;
+
+            // Progress bar animation with pauses
+            const progressInterval = setInterval(function() {
+                // Check if we're at a pause point
+                if (pauseIndex < pausePoints.length && progress >= pausePoints[pauseIndex]) {
+                    pauseCounter++;
+
+                    // Pause for ~600ms at each pause point
+                    if (pauseCounter < 6) {
+                        return; // Skip progress increment
+                    } else {
+                        pauseCounter = 0;
+                        pauseIndex++;
+                    }
+                }
+
+                progress += 1;
+
+                if (progress <= 100) {
+                    $('.progress-fill').css('width', progress + '%');
+                    $('.progress-text').text(progress + '%');
+                } else {
+                    clearInterval(progressInterval);
+                    // Redirect to Results page
+                    if (responseId) {
+                        window.location.href = '/Results?response=' + responseId;
+                    } else {
+                        window.location.href = '/Results';
+                    }
+                }
+            }, 90); // Progress: ~9 seconds base + pauses = ~11.5 seconds total
+
+            // Image carousel
+            const imageInterval = setInterval(function() {
+                images.removeClass('active');
+                currentImageIndex = (currentImageIndex + 1) % totalImages;
+                $(images[currentImageIndex]).addClass('active');
+            }, 1100); // Change image every 1.1 seconds
+
+            // Text message cycling
+            const textInterval = setInterval(function() {
+                textIndex = (textIndex + 1) % messages.length;
+                $('.calculating-title').fadeOut(250, function() {
+                    $(this).text(messages[textIndex]).fadeIn(250);
+                });
+            }, 1900); // Change text every 1.9 seconds
+
+            // Clear intervals when redirecting
+            setTimeout(function() {
+                clearInterval(imageInterval);
+                clearInterval(textInterval);
+            }, 12000); // Slightly longer than progress duration
+        });
+    </script>
+}
