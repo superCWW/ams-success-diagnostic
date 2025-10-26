@@ -19,11 +19,24 @@ public class QualtricsService
         _settings = settings.Value;
         _logger = logger;
 
+        // Read API token from environment variable first, fall back to settings
+        var apiToken = Environment.GetEnvironmentVariable("apiKey") ?? _settings.ApiToken;
+        var dataCenter = _settings.DataCenter;
+
         // Only configure HttpClient if settings are provided
-        if (!string.IsNullOrEmpty(_settings.DataCenter) && !string.IsNullOrEmpty(_settings.ApiToken))
+        if (!string.IsNullOrEmpty(dataCenter) && !string.IsNullOrEmpty(apiToken))
         {
-            _httpClient.BaseAddress = new Uri($"https://{_settings.DataCenter}.qualtrics.com/API/v3/");
-            _httpClient.DefaultRequestHeaders.Add("X-API-TOKEN", _settings.ApiToken);
+            _httpClient.BaseAddress = new Uri($"https://{dataCenter}.qualtrics.com/API/v3/");
+            _httpClient.DefaultRequestHeaders.Add("X-API-TOKEN", apiToken);
+
+            if (Environment.GetEnvironmentVariable("apiKey") != null)
+            {
+                _logger.LogInformation("Using Qualtrics API token from environment variable");
+            }
+            else
+            {
+                _logger.LogInformation("Using Qualtrics API token from appsettings.json");
+            }
         }
         else
         {
@@ -33,8 +46,11 @@ public class QualtricsService
 
     public async Task<JsonDocument?> GetSurveyResponseAsync(string responseId)
     {
+        // Check if API token is available (from environment variable or settings)
+        var apiToken = Environment.GetEnvironmentVariable("apiKey") ?? _settings.ApiToken;
+
         // If Qualtrics is not configured, return null (will use default high performance)
-        if (string.IsNullOrEmpty(_settings.ApiToken) || string.IsNullOrEmpty(_settings.DataCenter))
+        if (string.IsNullOrEmpty(apiToken) || string.IsNullOrEmpty(_settings.DataCenter))
         {
             _logger.LogWarning("Qualtrics not configured - skipping API call");
             return null;

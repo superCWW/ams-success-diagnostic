@@ -12,8 +12,14 @@ public class IndexModel : PageModel
         _logger = logger;
     }
 
-    public void OnGet()
+    public IActionResult OnGet(string? response)
     {
+        // Redirect to Calculating page with response parameter
+        if (!string.IsNullOrEmpty(response))
+        {
+            return RedirectToPage("/Calculating", new { response });
+        }
 
+        return RedirectToPage("/Calculating");
     }
 }

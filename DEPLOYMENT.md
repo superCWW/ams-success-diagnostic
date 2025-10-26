@@ -9,9 +9,19 @@ c:\_data\repo\ams-success-diagnostic\publish\
 
 ## Pre-Deployment Checklist
 
-### 1. Update Production Configuration
+### 1. Configure Qualtrics API Token
 
-**CRITICAL:** Before uploading, update your Qualtrics API token in `appsettings.json`:
+**RECOMMENDED: Use Environment Variable**
+
+The application will read the Qualtrics API token from an environment variable named `apiKey`.
+
+Set this environment variable on your hosting server:
+- **Variable Name:** `apiKey`
+- **Variable Value:** Your Qualtrics API token
+
+**Alternative: Update appsettings.json**
+
+If you prefer not to use environment variables, you can update `appsettings.json`:
 
 ```json
 {
@@ -24,6 +34,8 @@ c:\_data\repo\ams-success-diagnostic\publish\
 ```
 
 **Location:** `c:\_data\repo\ams-success-diagnostic\publish\appsettings.json`
+
+**Important:** The environment variable takes precedence over appsettings.json. If the environment variable `apiKey` exists, it will be used instead of the value in appsettings.json.
 
 ### 2. Update Database Connection String (if different in production)
 
