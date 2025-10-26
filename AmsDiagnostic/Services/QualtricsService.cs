@@ -19,13 +19,27 @@ public class QualtricsService
         _settings = settings.Value;
         _logger = logger;
 
-        // Configure HttpClient base address and headers
-        _httpClient.BaseAddress = new Uri($"https://{_settings.DataCenter}.qualtrics.com/API/v3/");
-        _httpClient.DefaultRequestHeaders.Add("X-API-TOKEN", _settings.ApiToken);
+        // Only configure HttpClient if settings are provided
+        if (!string.IsNullOrEmpty(_settings.DataCenter) && !string.IsNullOrEmpty(_settings.ApiToken))
+        {
+            _httpClient.BaseAddress = new Uri($"https://{_settings.DataCenter}.qualtrics.com/API/v3/");
+            _httpClient.DefaultRequestHeaders.Add("X-API-TOKEN", _settings.ApiToken);
+        }
+        else
+        {
+            _logger.LogWarning("Qualtrics settings not configured - API calls will not be made");
+        }
     }
 
     public async Task<JsonDocument?> GetSurveyResponseAsync(string responseId)
     {
+        // If Qualtrics is not configured, return null (will use default high performance)
+        if (string.IsNullOrEmpty(_settings.ApiToken) || string.IsNullOrEmpty(_settings.DataCenter))
+        {
+            _logger.LogWarning("Qualtrics not configured - skipping API call");
+            return null;
+        }
+
         try
         {
             _logger.LogInformation("Fetching survey response {ResponseId} from Qualtrics", responseId);
